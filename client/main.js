@@ -3,7 +3,7 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import { mount } from 'react-mounter';
 // import '../imports/startup/accounts-config.js'
 import App from '../imports/ui/App';
-import Fincas from '../imports/ui/Fincas'
+import ListaFincas from '../imports/ui/ListaFincas'
 import Home from '../imports/ui/Home';
 import Animal from '../imports/ui/Animal';
 import '../imports/api/fincas.js';
@@ -20,12 +20,12 @@ FlowRouter.route('/fincas', {
     name: 'Fincas',
     action() {
         mount(App, {
-            main: <Fincas/>,
+            main: <ListaFincas/>,
         });
     },
 });
 FlowRouter.route('/fincas/:fincaId/animals', {
-    name: 'Fincas',
+    name: 'Animales',
     action(params,queryParams) {
         mount(App, {
             main: <Animal/>,

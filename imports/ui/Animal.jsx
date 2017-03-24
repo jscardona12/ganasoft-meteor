@@ -2,7 +2,6 @@
  * Created by Juan on 05/03/2017.
  */
 import React, {Component} from 'react';
-import axios from 'axios';
 const ROOT_URL = "https://ganasoft-api.herokuapp.com/";
 
 class Animal extends Component {
