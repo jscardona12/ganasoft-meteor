@@ -7,7 +7,7 @@
 import React, {Component, PropTypes} from 'react';
 import {createContainer} from 'meteor/react-meteor-data';
 import Finca from './Finca';
-import {farms} from '../api/fincas.js';
+import {Farms} from '../api/fincas.js';
 
 class Fincas extends Component {
     constructor(props) {
@@ -18,26 +18,17 @@ class Fincas extends Component {
         }
     }
 
-    // getFincas() {
-    //     axios.get(ROOT_URL + "farms")
-    //         .then(response => {
-    //             this.setState({
-    //                 fincas: response.data
-    //             })
-    //         })
-    // }
-
-
-
     componentDidMount() {
         console.log("hola");
-        this.getFincas();
+        // this.getFincas();
     }
 
     render() {
         return (
             <div className="container-fluid col-md-10">
                 <div className="row placeholders">
+                    {console.log(this.props.fincas)}
+                    {/*{console.log(this.props.currentUser)}*/}
                     {this.props.fincas.map((finca, index)=>
                         <Finca key={index} finca={finca}/>
                     )}
@@ -52,13 +43,13 @@ class Fincas extends Component {
 }
 Fincas.propTypes = {
     fincas: PropTypes.array.isRequired,
-    currentUser: PropTypes.object,
+    // currentUser: PropTypes.object,
 };
 export default createContainer(() => {
-    Meteor.subscribe('fincas');
+    // Meteor.subscribe('fincas');
     return {
-        fincas: farms.find({}),
-        currentUser: Meteor.user(),
+        fincas: Farms.find({}).fetch(),
+        // currentUser: Meteor.user(),
     };
 
 }, Fincas);

@@ -46,7 +46,7 @@ class Finca extends Component {
     // }
 
     componentDidMount() {
-        console.log("hola");
+        console.log("im finca");
         // this.getAnimales();
     }
 

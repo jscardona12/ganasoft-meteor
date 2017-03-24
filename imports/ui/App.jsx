@@ -1,8 +1,5 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router';
-import Fincas from './Fincas';
-import Animal from './Animal';
-import Home from './Home'
+
 
 class App extends Component {
     constructor(props) {
@@ -26,11 +23,11 @@ class App extends Component {
                                 <span className="icon-bar"></span>
                                 <span className="icon-bar"></span>
                             </button>
-                            <Link to="/" className="navbar-brand">GanaSoft</Link>
+                            <a href="/" className="navbar-brand">GanaSoft</a>
                         </div>
                         <div className="navbar-collapse collapse">
                             <ul className="nav navbar-nav navbar-right">
-                                <li><Link to="/fincas">Fincas</Link></li>
+                                <li><a href="/fincas">Fincas</a></li>
                                 <li><a href="#">Settings</a></li>
                                 <li><a href="#">Profile</a></li>
                                 <li><a href="#">Help</a></li>
@@ -44,7 +41,7 @@ class App extends Component {
                 <br/>
                 <br/>
                 <div>
-                    {this.props.children}
+                    {this.props.main}
                 </div>
             </div>
         );
