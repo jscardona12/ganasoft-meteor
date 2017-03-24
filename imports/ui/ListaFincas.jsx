@@ -27,7 +27,7 @@ class Fincas extends Component {
         return (
             <div className="container-fluid col-md-10">
                 <div className="row placeholders">
-                    {console.log(this.props.fincas)}
+                    {console.log(Farms.find({}).fetch())}
                     {/*{console.log(this.props.currentUser)}*/}
                     {this.props.fincas.map((finca, index)=>
                         <Finca key={index} finca={finca}/>
