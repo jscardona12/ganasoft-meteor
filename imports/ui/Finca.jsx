@@ -22,7 +22,7 @@ class Finca extends Component {
 
     deleteThisFarm() {
       alert(this.props.finca._id);
-      Meteor.call('farms.remove', this.props.finca._id);
+      Meteor.call('fincas.remove', this.props.finca._id);
     }
 
     getPath(){
