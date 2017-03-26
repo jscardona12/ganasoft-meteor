@@ -1,11 +1,11 @@
 import React, {Component, PropTypes} from 'react';
 import {createContainer} from 'meteor/react-meteor-data';
 import Finca from './Finca';
-import {Farms} from '../api/fincas.js';
+import {Fincas} from '../api/fincas.js';
 import ReactDOM from 'react-dom';
 
 
-class Fincas extends Component {
+class ListaFincas extends Component {
     constructor(props) {
         super(props);
 
@@ -20,7 +20,7 @@ class Fincas extends Component {
       // Find the text field via the React ref
       const text = ReactDOM.findDOMNode(this.refs.textInput).value.trim();
 
-      Meteor.call('farms.insert', text);
+      Meteor.call('fincas.insert', text);
 
       // Clear form
       ReactDOM.findDOMNode(this.refs.textInput).value = '';
@@ -32,7 +32,6 @@ class Fincas extends Component {
     }
 
     render() {
-<<<<<<< HEAD:imports/ui/Fincas.jsx
         if (Meteor.userId()) {
             return (
                 <div className="container-fluid col-md-10">
@@ -48,16 +47,6 @@ class Fincas extends Component {
                         {this.props.fincas.map((finca, index) => <Finca key={index} finca={finca}/>)}
                     </div>
 
-=======
-        return (
-            <div className="container-fluid col-md-10">
-                <div className="row placeholders">
-                    {console.log(Farms.find({}).fetch())}
-                    {/*{console.log(this.props.currentUser)}*/}
-                    {this.props.fincas.map((finca, index)=>
-                        <Finca key={index} finca={finca}/>
-                    )}
->>>>>>> f9e91862e722ce76dddcab7acecc9d89d7080e56:imports/ui/ListaFincas.jsx
                 </div>
             );
         } else {
@@ -72,15 +61,15 @@ class Fincas extends Component {
     }
 
 }
-Fincas.propTypes = {
+ListaFincas.propTypes = {
     fincas: PropTypes.array.isRequired,
     currentUser: PropTypes.object
 };
 export default createContainer(() => {
-    Meteor.subscribe('farms');
+    Meteor.subscribe('fincas');
     return {
-        fincas: Farms.find({owner: Meteor.userId()}).fetch(),
+        fincas: Fincas.find({owner: Meteor.userId()}).fetch(),
         currentUser: Meteor.user()
     };
 
-}, Fincas);
+}, ListaFincas);
