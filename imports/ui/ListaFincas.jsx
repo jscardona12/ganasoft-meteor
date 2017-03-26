@@ -32,6 +32,7 @@ class Fincas extends Component {
     }
 
     render() {
+<<<<<<< HEAD:imports/ui/Fincas.jsx
         if (Meteor.userId()) {
             return (
                 <div className="container-fluid col-md-10">
@@ -47,6 +48,16 @@ class Fincas extends Component {
                         {this.props.fincas.map((finca, index) => <Finca key={index} finca={finca}/>)}
                     </div>
 
+=======
+        return (
+            <div className="container-fluid col-md-10">
+                <div className="row placeholders">
+                    {console.log(Farms.find({}).fetch())}
+                    {/*{console.log(this.props.currentUser)}*/}
+                    {this.props.fincas.map((finca, index)=>
+                        <Finca key={index} finca={finca}/>
+                    )}
+>>>>>>> f9e91862e722ce76dddcab7acecc9d89d7080e56:imports/ui/ListaFincas.jsx
                 </div>
             );
         } else {
