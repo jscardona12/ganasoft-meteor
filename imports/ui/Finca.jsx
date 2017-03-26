@@ -1,8 +1,5 @@
 import React, {Component} from 'react';
-import axios from 'axios';
-const ROOT_URL = "https://ganasoft-api.herokuapp.com/";
-
-
+import { Meteor } from 'meteor/meteor';
 
 class Finca extends Component {
     constructor(props) {
@@ -23,14 +20,11 @@ class Finca extends Component {
         return config
     }
 
-    deleteFinca() {
-        axios.delete(ROOT_URL + "farms?farm=" + this.props.finca._id +"&owner="+this.props.finca.owner).then(response => {
-            console.log(response);
-            console.log(finca);
-
-        })
-
+    deleteThisFarm() {
+      alert(this.props.finca._id);
+      Meteor.call('farms.remove', this.props.finca._id);
     }
+
     getPath(){
         return"/"+this.props.finca._id+"/animales"
     }
@@ -63,7 +57,7 @@ class Finca extends Component {
                 {/*</NavLink>*/}
                 {/*<h4 className="text-muted">NumAnimales: {this.props.finca.animals.length}</h4>*/}
                 {/*<NavLink to={this.getPath()}><button> lista de animales  </button> </NavLink>*/}
-                {/*<button onClick={this.deleteFinca.bind(this)}> ELIMINAR FINCA</button>*/}
+                <button onClick={this.deleteThisFarm.bind(this)}> ELIMINAR FINCA</button>
             </div>
         );
     }

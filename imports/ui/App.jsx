@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 
 class App extends Component {
     constructor(props) {
@@ -8,39 +8,28 @@ class App extends Component {
         this.state = {}
     }
 
-
     render() {
         return (
-
             <div>
-                <nav className="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <nav className="navbar navbar-inverse">
                     <div className="container-fluid">
                         <div className="navbar-header">
-                            <button type="button" className="navbar-toggle" data-toggle="collapse"
-                                    data-target=".navbar-collapse">
-                                <span className="sr-only">Toggle navigation</span>
-                                <span className="icon-bar"></span>
-                                <span className="icon-bar"></span>
-                                <span className="icon-bar"></span>
-                            </button>
-                            <a href="/" className="navbar-brand">GanaSoft</a>
+                            <p className="navbar-brand">Ganasoft</p>
                         </div>
-                        <div className="navbar-collapse collapse">
-                            <ul className="nav navbar-nav navbar-right">
-                                <li><a href="/fincas">Fincas</a></li>
-                                <li><a href="#">Settings</a></li>
-                                <li><a href="#">Profile</a></li>
-                                <li><a href="#">Help</a></li>
-                            </ul>
-                            <form className="navbar-form navbar-right">
-                                <input type="text" className="form-control" placeholder="Search..."/>
-                            </form>
-                        </div>
+                        <ul className="nav navbar-nav">
+                            <li>
+                                <a href="/">Home</a>
+                            </li>
+                            <li>
+                                <a href="/fincas">Farms</a>
+                            </li>
+                            <li>
+                              <AccountsUIWrapper />
+                            </li>
+                        </ul>
                     </div>
                 </nav>
-                <br/>
-                <br/>
-                <div>
+                <div className="container">
                     {this.props.main}
                 </div>
             </div>
