@@ -25,7 +25,7 @@ class Fincas extends Component {
 
     render() {
         return (
-            <div className="container-fluid col-md-10">
+            <div className="container col-md-10">
                 <div className="row placeholders">
                     {console.log(Farms.find({}).fetch())}
                     {/*{console.log(this.props.currentUser)}*/}

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import axios from 'axios';
-const ROOT_URL = "https://ganasoft-api.herokuapp.com/";
+import {Farms} from '../api/fincas';
+import SweetAlert from 'react-bootstrap-sweetalert';
 
 
 
@@ -9,41 +9,42 @@ class Finca extends Component {
         super(props);
 
         this.state = {
-            animales: [],
-            nombre: '',
-            codigo: '',
-            nota: ''
+            alert:null
         }
     }
 
-    getConfig(){
-        var config = {
-            headers: {'farm': this.props.finca._id}
-        };
-        return config
-    }
 
     deleteFinca() {
-        axios.delete(ROOT_URL + "farms?farm=" + this.props.finca._id +"&owner="+this.props.finca.owner).then(response => {
-            console.log(response);
-            console.log(finca);
 
-        })
+        const texto = "Se ha eliminado la finca &quot;" + this.props.finca.name + "&quot;"
+        const hideAlert=()=> {
+            this.setState({
+                alert: null
+            });
+        }
+        const getAlert = () => (
+        <SweetAlert
+            warning
+            showCancel
+            confirmBtnText="Yes, delete it!"
+            confirmBtnBsStyle="danger"
+            cancelBtnBsStyle="default"
+            title="Are you sure?"
+            onConfirm={hideAlert()}
+            onCancel={hideAlert()}
+        >
+            You will not be able to recover this imaginary file!
+        </SweetAlert>
+        );
 
+        this.setState({
+            alert: getAlert()
+        });
     }
     getPath(){
-        return"/"+this.props.finca._id+"/animales"
+        return"fincas/"+this.props.finca._id+"/animales"
     }
 
-    // getAnimales() {
-    //
-    //     axios.get(ROOT_URL + "animals/" + this.props.fincas.id, this.getConfig())
-    //         .then(response => {
-    //             this.setState({
-    //                 animales: response.data
-    //             })
-    //         })
-    // }
 
     componentDidMount() {
         console.log("im finca");
@@ -52,18 +53,17 @@ class Finca extends Component {
 
     render() {
         return (
-            <div className="col-md-4 placeholder text-center">
-                <h2>{this.props.finca.name}</h2>
-                {/*// <NavLink to={this.getPath()}>*/}
-                {/*//     <button>*/}
-                         {/*<img src="https://i.ytimg.com/vi/KHS-s_m5GRQ/hqdefault.jpg"*/}
-                {/*//              className="center-block img-responsive img-circle"*/}
-                {/*//              alt="Generic placeholder thumbnail"/>*/}
-                {/*//     </button>*/}
-                {/*</NavLink>*/}
-                {/*<h4 className="text-muted">NumAnimales: {this.props.finca.animals.length}</h4>*/}
-                {/*<NavLink to={this.getPath()}><button> lista de animales  </button> </NavLink>*/}
-                {/*<button onClick={this.deleteFinca.bind(this)}> ELIMINAR FINCA</button>*/}
+            <div className="col-md-4 circle">
+                <button className="delete" onClick={this.deleteFinca.bind(this)}>
+                    &times;
+                </button>
+                <a href={this.getPath()}>
+                    <button className="btn btn-circle"><h2>{this.props.finca.name}</h2></button>
+                </a>
+                {this.state.alert}
+                <h4 className="text-muted">NumAnimales: 2</h4>
+                <a href={this.getPath()}><button> lista de animales  </button> </a>
+                <button onClick={this.deleteFinca.bind(this)}> ELIMINAR FINCA</button>
             </div>
         );
     }

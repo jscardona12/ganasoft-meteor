@@ -24,7 +24,7 @@ FlowRouter.route('/fincas', {
         });
     },
 });
-FlowRouter.route('/fincas/:fincaId/animals', {
+FlowRouter.route('/fincas/:fincaId/animales', {
     name: 'Animales',
     action(params,queryParams) {
         mount(App, {

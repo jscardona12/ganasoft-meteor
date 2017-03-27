@@ -12,6 +12,7 @@
     "react-addons-css-transition-group": "^15.4.2",
     "react-addons-pure-render-mixin": "^15.4.2",
     "react-addons-transition-group": "^15.4.2",
+    "react-bootstrap-sweetalert": "^3.0.0",
     "react-dom": "^15.4.2",
     "react-mounter": "^1.2.0",
     "react-router": "^4.0.0",
