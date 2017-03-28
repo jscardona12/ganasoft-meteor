@@ -11,11 +11,9 @@ class Home extends Component {
                     <h1 >Welcome to GanaSoft</h1>
                     <h2> GanaSoft is a Web Page where you can administrate your farms </h2>
                 </div>
-
             </div>
         );
     }
 }
 
 export default Home;
-

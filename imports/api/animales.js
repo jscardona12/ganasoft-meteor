@@ -1,4 +1,4 @@
-/**
+/**s
  * Created by Juan on 16/03/2017.
  */
 import { Meteor } from 'meteor/meteor';

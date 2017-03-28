@@ -8,6 +8,7 @@ button.btn-circle {
     border-radius: 100%;
     background-color: #008A91;
     color: #000E0A;
+    margin-top: 50px;
 }
 #navbar{
     background-color: #050E04;
@@ -37,8 +38,8 @@ button.btn-circle {
     border: none;
     position: relative;
     color: #000E0A;
-    margin-right:15px;
-    margin-top: 9px;
+    margin-right:10px;
+    margin-top: 50px;
 }
 
 #body{
