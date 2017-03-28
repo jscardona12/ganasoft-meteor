@@ -35,6 +35,13 @@ class ListaFincas extends Component {
     render() {
         if (Meteor.userId()) {
             return (
+              <div>
+
+              <form className="new-task" onSubmit={this.handleSubmit.bind(this)}>
+
+    <input type="text" ref="textInput" placeholder="Type to add new farms"/>
+
+</form>
 
                     <div className="row placeholders">
                         {console.log(Farms.find({}).fetch())}
@@ -43,7 +50,10 @@ class ListaFincas extends Component {
                             <Finca key={index} finca={finca}/>
                         )}
 
-                    </div>);
+                    </div>
+
+</div>
+                  );
                     } else {
                                return (
                                <div>
