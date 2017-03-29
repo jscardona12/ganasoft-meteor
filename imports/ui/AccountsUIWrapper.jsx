@@ -15,6 +15,6 @@ export default class AccountsUIWrapper extends Component {
   }
   render() {
     // Just render a placeholder container that will be filled in
-      return <li id="navbar-list"ref="container"> </li>;
+      return <li id="navbar-lists"ref="container"> </li>;
   }
 }

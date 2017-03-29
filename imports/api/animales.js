@@ -20,12 +20,12 @@ if (Meteor.isServer) {
 }
 
 Meteor.methods({
-  'animales.insert'(farm, number, especie, raza, sexo, foto, descripcion) {
+  'animales.insert'(farm, number, especie, raza, sexo, descripcion) {
+
     check(number, Number);
     check(especie, String);
     check(raza, String);
     check(sexo, String);
-    check(foto, String);
     check(descripcion, String);
 
     // Make sure the user is logged in before inserting a task
@@ -39,7 +39,6 @@ Meteor.methods({
       especie,
       raza,
       sexo,
-      foto,
       descripcion,
       fechaNacimiento: new Date(),
       owner: this.userId

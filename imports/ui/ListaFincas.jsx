@@ -12,7 +12,7 @@ class ListaFincas extends Component {
 
         this.state = {
             fincas: []
-        }
+        };
     }
 
     handleSubmit(event) {
@@ -35,7 +35,7 @@ class ListaFincas extends Component {
     render() {
         if (Meteor.userId()) {
             return (
-                <div>
+                <div className="col-md-11">
 
                     <form className="new-task" onSubmit={this.handleSubmit.bind(this)}>
 

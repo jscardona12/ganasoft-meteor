@@ -1,51 +1,34 @@
 /**
  * Created by Juan on 05/03/2017.
  */
-import React, {Component} from 'react';
-const ROOT_URL = "https://ganasoft-api.herokuapp.com/";
-
+import React, {Component,PropTypes} from 'react';
+import SweetAlert from 'react-bootstrap-sweetalert';
+import {createContainer} from 'meteor/react-meteor-data'
+import {Meteor} from 'meteor/meteor';
+import {Animales} from '../api/animales'
+import { FlowRouter } from 'meteor/kadira:flow-router';
 class Animal extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            animales: [],
-            nombre: '',
-            codigo: '',
-            nota: ''
-        }
+        };
     }
 
     componentDidMount() {
         console.log("hola");
-        this.getAnimales();
-    }
-    getConfig() {
-        var config = {
-            headers: {'farm': this.props.params.idfinca}
-        };
-        return config
     }
 
     getPath() {
         return "/" + this.props.params.idfinca + "/animales"
     }
 
-    getAnimales() {
-
-        axios.get(ROOT_URL + "animals?farm="+this.props.params.idfinca )
-            .then(response => {
-                console.log(ROOT_URL + "animals?farm="+this.props.params.idfinca );
-                this.setState({
-                    animales: response.data
-                })
-            })
-    }
 
     render() {
         return (
             <div>
-                {this.state.animales.map((animal, index)=>
+                {console.log(this.props.animales)}
+                {this.props.animales.map((animal, index)=>
                     <div key ={index} className="panel panel-info col-md-3">
                         <div className="panel-heading">
                             <h3 className="panel-title"> ID: {animal.numero}</h3>
@@ -86,5 +69,19 @@ class Animal extends Component {
 
 
 }
-export default Animal;
+Animal.propTypes = {
+    animales: PropTypes.array.isRequired,
+    currentUser: PropTypes.object
+};
+
+export default createContainer(() => {
+    Meteor.subscribe('animales');
+    var idFinca = FlowRouter.getParam("fincaId");
+    console.log(idFinca);
+    return {
+        animales: Animales.find({farm:idFinca,owner:Meteor.userId()}).fetch(),
+        currentUser: Meteor.user()
+    };
+
+}, Animal);
 

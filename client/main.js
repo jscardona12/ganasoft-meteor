@@ -28,7 +28,7 @@ FlowRouter.route('/fincas/:fincaId/animales', {
     name: 'Animales',
     action(params,queryParams) {
         mount(App, {
-            main: <Animal/>,
+            main: <Animal />,
         });
     },
 });
