@@ -23,7 +23,7 @@ class App extends Component {
                                 <span className="icon-bar"></span>
                             </button>
 
-                            < a href="/" id="navbar-brand" className="navbar-brand">
+                            <a href="/" id="navbar-brand" className="navbar-brand">
                                 <img
                                     className="logo"
                                     src="./images/logo1.png"
@@ -48,7 +48,7 @@ class App extends Component {
                 <br/>
                 <br/>
                 <div>
-                    < div className="container col-md-12s">
+                    <div className="container col-md-12">
                         {this.props.main}
                     </div>
                 </ div >

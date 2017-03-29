@@ -14,7 +14,6 @@ class Finca extends Component {
     }
 
     deleteFinca() {
-
         const texto = "Se ha eliminado la finca &quot;" + this.props.finca.name + "&quot;"
         const hideAlert = () => {
             this.setState({
@@ -23,6 +22,7 @@ class Finca extends Component {
         }
         const getAlert = () => (
             <SweetAlert
+                title="are you sure"
                 warning
                 showCancel
                 confirmBtnText="Yes, delete it!"
@@ -39,10 +39,10 @@ class Finca extends Component {
         this.setState({
             alert: getAlert()
         });
+
     }
 
     deleteThisFarm() {
-        alert(this.props.finca._id);
         Meteor.call('fincas.remove', this.props.finca._id);
     }
 
@@ -60,7 +60,7 @@ class Finca extends Component {
         return (
             <div className="col-md-4 circle">
                 <div>
-                    <button className="delete" onClick={this.deleteFinca.bind(this)}>
+                    <button className="delete" onClick={this.deleteThisFarm.bind(this)}>
                         &times;
                     </button>
                 </div>

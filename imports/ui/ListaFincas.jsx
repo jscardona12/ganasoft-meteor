@@ -35,6 +35,13 @@ class ListaFincas extends Component {
     render() {
         if (Meteor.userId()) {
             return (
+                <div>
+
+                    <form className="new-task" onSubmit={this.handleSubmit.bind(this)}>
+
+                        <input type="text" ref="textInput" placeholder="Type to add new farms"/>
+
+                    </form>
 
                     <div className="row placeholders">
                         {console.log(Farms.find({}).fetch())}
@@ -43,29 +50,32 @@ class ListaFincas extends Component {
                             <Finca key={index} finca={finca}/>
                         )}
 
-                    </div>);
-                    } else {
-                               return (
-                               <div>
-                               You must be logged in to view your farms!!!
-                               </div>
-                               );
+                    </div>
 
-                           }
+                </div>
+            );
+        } else {
+            return (
+                <div>
+                    You must be logged in to view your farms!!!
+                </div>
+            );
 
-                    }
+        }
 
-                    }
-                    ListaFincas.propTypes = {
-                               fincas: PropTypes.array.isRequired,
-                               currentUser: PropTypes.object
-                           };
+    }
 
-                    export default createContainer(() => {
-                               Meteor.subscribe('fincas');
-                               return {
-                               fincas: Farms.find({owner: Meteor.userId()}).fetch(),
-                               currentUser: Meteor.user()
-                           };
+}
+ListaFincas.propTypes = {
+    fincas: PropTypes.array.isRequired,
+    currentUser: PropTypes.object
+};
 
-                           }, ListaFincas);
+export default createContainer(() => {
+    Meteor.subscribe('fincas');
+    return {
+        fincas: Farms.find({owner: Meteor.userId()}).fetch(),
+        currentUser: Meteor.user()
+    };
+
+}, ListaFincas);
