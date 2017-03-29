@@ -5,7 +5,7 @@ class App extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {}
+        this.state = {};
     }
 
 
@@ -48,7 +48,7 @@ class App extends Component {
                 <br/>
                 <br/>
                 <div>
-                    <div className="container col-md-12s">
+                    <div className="container col-md-12">
                         {this.props.main}
                     </div>
                 </ div >
