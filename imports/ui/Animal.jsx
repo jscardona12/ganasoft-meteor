@@ -32,7 +32,7 @@ class Animal extends Component {
     }
 
     getAnimales() {
-
+        //Con meteor ya no tienen que usar axios, les queda más fácil el manejo conectándolo a la DB de MongoLab de Heroku si van a desplegar ahí
         axios.get(ROOT_URL + "animals?farm="+this.props.params.idfinca )
             .then(response => {
                 console.log(ROOT_URL + "animals?farm="+this.props.params.idfinca );
@@ -54,8 +54,9 @@ class Animal extends Component {
                             <img alt="User Pic" src={animal.foto}
                                  className="img-circle img-responsive"/>
                         </div>
-                        <div className="col-md-9">
-                            <div className=" col-md-9 col-lg-9 ">
+                        
+                        <div className="col-md-9"><!-- Debería ser col-md-8 para no pasarse de 12 -->
+                            <div className=" col-md-9 col-lg-9 "> <!-- Solo volver a definir si se quiere subdividir la grilla de 8 -->
                                 <table className="table table-user-information">
                                     <tbody>
                                     <tr>
