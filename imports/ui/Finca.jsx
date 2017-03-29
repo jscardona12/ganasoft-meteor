@@ -16,34 +16,48 @@ class Finca extends Component {
     }
 
     deleteFinca(name) {
-        const texto = "Se ha eliminado la finca" +name ;
+        const texto = "Se ha eliminado la finca \"" +name+ "\"" ;
         const hideAlert = () => {
             this.setState({
                 alert: null
             });
-        }
-        const deleteThisFarm = ()=> {
+        };
+        const succesA = ()=> {
             console.log("delete");
-            Meteor.call('fincas.remove', this.props.finca._id);
-        }
+            this.setState({
+                alert: getSuccessAlert
+            });
 
-        const getAlert = (
+        };
+        const deleteThisFarm =()=> {
+            Meteor.call('fincas.remove', this.props.finca._id);
+        };
+
+        const getWAlert = (
 
             <SweetAlert
                 warning
                 showCancel
-                confirmBtnText="Yes, delete it!"
+                confirmBtnText="Si!"
                 confirmBtnBsStyle="danger"
                 cancelBtnBsStyle="default"
-                title="Are you sure?"
-                onConfirm={deleteThisFarm}
+                title="Estas seguro?"
+                onConfirm={succesA}
                 onCancel={hideAlert}
             >
-                You will not be able to recover this file!
+                No podras recuperar la informacion de esta finca!
             </SweetAlert>
         );
+        const getSuccessAlert = (
+            <SweetAlert
+                        success
+                        title={texto}
+                        onConfirm={deleteThisFarm}>
+            </SweetAlert>
+
+        );
         this.setState({
-            alert: getAlert
+            alert: getWAlert
         });
 
 
