@@ -19,7 +19,7 @@ if (Meteor.isServer) {
 }
 
 Meteor.methods({
-    'animales.insert'(farm, number, especie, raza, sexo, descripcion) {
+    'animales.insert'(farm, number, especie, raza, sexo, descripcion, date) {
 
         console.log("ATRIBUTOS");
         console.log(farm);
@@ -29,11 +29,12 @@ Meteor.methods({
         console.log(sexo);
         console.log(descripcion);
 
-        check(number, Number);
+        //check(number, 'number');
         check(especie, String);
         check(raza, String);
         check(sexo, String);
         check(descripcion, String);
+        check(date, Date);
 
 
 
@@ -49,7 +50,7 @@ Meteor.methods({
             raza,
             sexo,
             descripcion,
-            fechaNacimiento: new Date(),
+            date,
             owner: this.userId
         });
     },
