@@ -18,6 +18,8 @@ if (Meteor.isServer) {
     });
 }
 
+// se recomienda cambiar el codigo ejemplo por variables que tengan relacion con el proyecto
+// borrar codigo inutilizado
 Meteor.methods({
     'animales.insert'(farm, number, especie, raza, sexo, descripcion, date) {
 
@@ -29,7 +31,7 @@ Meteor.methods({
         console.log(sexo);
         console.log(descripcion);
 
-        //check(number, 'number');
+        
         check(especie, String);
         check(raza, String);
         check(sexo, String);
@@ -57,7 +59,7 @@ Meteor.methods({
 
     'animales.remove'(animalId) {
         console.log(animalId);
-        //check(taskId, String);
+      
 
 
         const task = Animales.findOne(animalId);
