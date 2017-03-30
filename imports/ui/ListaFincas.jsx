@@ -29,9 +29,9 @@ class ListaFincas extends Component {
 
     componentDidMount() {
         console.log("hola");
-        // this.getFincas();
+       
     }
-
+//borrar codigo no utilizada
     render() {
         if (Meteor.userId()) {
             return (
