@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import {Farms} from '../api/fincas';
+import {Farms} from '../../api/fincas';
 import SweetAlert from 'react-bootstrap-sweetalert';
 import {Meteor} from 'meteor/meteor';
-import {Animales} from '../api/animales'
+import {Animales} from '../../api/animales'
 import {FlowRouter} from 'meteor/kadira:flow-router';
 
 class Finca extends Component {

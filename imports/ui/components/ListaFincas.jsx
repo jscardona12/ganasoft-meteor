@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {createContainer} from 'meteor/react-meteor-data';
 import Finca from './Finca';
-import {Farms} from '../api/fincas.js';
+import {Farms} from '../../api/fincas.js';
 import ReactDOM from 'react-dom';
 import {Meteor} from 'meteor/meteor';
 

@@ -2,10 +2,10 @@ import React from 'react';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { mount } from 'react-mounter';
 import '../imports/startup/accounts-config.js'
-import App from '../imports/ui/App';
-import ListaFincas from '../imports/ui/ListaFincas'
-import Home from '../imports/ui/Home';
-import Animal from '../imports/ui/Animal';
+import App from '../imports/ui/components/App';
+import ListaFincas from '../imports/ui/components/ListaFincas'
+import Home from '../imports/ui/components/Home';
+import Animal from '../imports/ui/components/Animal';
 import '../imports/api/fincas.js';
 
 FlowRouter.route('/', {

@@ -5,7 +5,7 @@ import React, {Component, PropTypes} from 'react';
 import SweetAlert from 'react-bootstrap-sweetalert';
 import {createContainer} from 'meteor/react-meteor-data'
 import {Meteor} from 'meteor/meteor';
-import {Animales} from '../api/animales'
+import {Animales} from '../../api/animales'
 import {FlowRouter} from 'meteor/kadira:flow-router';
 import Modal from 'react-modal';
 import DatePicker from 'react-datepicker';
@@ -45,9 +45,9 @@ class Animal extends Component {
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
         this.insertAnimal = this.insertAnimal.bind(this);
-        this.changeDate= this.changeDate.bind(this);
-        this.changeDate1= this.changeDate1.bind(this);
-        this.changeDate2= this.changeDate2.bind(this);
+        this.changeDate = this.changeDate.bind(this);
+        this.changeDate1 = this.changeDate1.bind(this);
+        this.changeDate2 = this.changeDate2.bind(this);
     }
 
     changeDate(date) {
@@ -64,15 +64,14 @@ class Animal extends Component {
 
     componentDidMount() {
         console.log("hola");
-        console.log("THE DATE IS: "+this.state.startDate);
+        console.log("THE DATE IS: " + this.state.startDate);
     }
 
     getPath() {
         return "/" + this.props.params.idfinca + "/animales"
     }
 
-    insertAnimal()
-    {
+    insertAnimal() {
         Meteor.call('animales.insert', FlowRouter.getParam('fincaId'), this.state.number, this.state.especie, this.state.raza, this.state.sexo, this.state.descripcion, this.state.startDate.toDate());
         this.setState({modalIsOpen: false});
 
@@ -86,25 +85,25 @@ class Animal extends Component {
         this.setState({modalIsOpen: false});
     }
 
-    deleteThisAnimal(id){
-      Meteor.call('animales.remove', id);
+    deleteThisAnimal(id) {
+        Meteor.call('animales.remove', id);
 
     }
 
     render() {
-      let filteredAnimals=this.props.animales;
-      if (this.state.fecha1) {
-        filteredAnimals = filteredAnimals.filter(animal => animal.date-this.state.fecha1>=0);
-      }
-      if (this.state.fecha2) {
-        filteredAnimals = filteredAnimals.filter(animal => animal.date-this.state.fecha2<=0);
-      }
-      if (this.state.filtroId) {
-        filteredAnimals = filteredAnimals.filter(animal => animal._id.toString().startsWith(this.state.filtroId));
-      }
-      if (this.state.filtroRaza) {
-        filteredAnimals = filteredAnimals.filter(animal => animal.raza.startsWith(this.state.filtroRaza));
-      }
+        let filteredAnimals = this.props.animales;
+        if (this.state.fecha1) {
+            filteredAnimals = filteredAnimals.filter(animal => animal.date - this.state.fecha1 >= 0);
+        }
+        if (this.state.fecha2) {
+            filteredAnimals = filteredAnimals.filter(animal => animal.date - this.state.fecha2 <= 0);
+        }
+        if (this.state.filtroId) {
+            filteredAnimals = filteredAnimals.filter(animal => animal.number.toString().startsWith(this.state.filtroId));
+        }
+        if (this.state.filtroRaza) {
+            filteredAnimals = filteredAnimals.filter(animal => animal.raza.startsWith(this.state.filtroRaza));
+        }
 
 
         return (
@@ -113,33 +112,38 @@ class Animal extends Component {
                 <div className="row">
                     <div className="col-md-10">
                         <div className="row">
-                          <div className="col-md-2 text-center">
-                            <b>Filtrar </b>
-                          </div>
-                          <div className="col-md-2 text-center">
-                            Id: <input type="text" value={this.state.filtroId} onChange={(event) => {
+                            <div className="col-md-2 text-center">
+                                <b>Filtrar </b>
+                            </div>
+                            <div className="col-md-2 text-center">
+                                Id: <input type="text" value={this.state.filtroId} onChange={(event) => {
                                 this.setState({filtroId: event.target.value})
                             }}/>
-                          </div>
+                            </div>
                             <div className="col-md-2 text-center">
-                              Raza: <input type="text" value={this.state.filtroRaza} onChange={(event) => {
-                                  this.setState({filtroRaza: event.target.value})
-                              }}/>
-                          </div>
-                          <div className="col-md-2 text-center">
-                            After: <DatePicker selected={this.state.fecha1} onChange={this.changeDate1}/>
-                          </div>
-                          <div className="col-md-2 text-center">
-                            Before: <DatePicker selected={this.state.fecha2} onChange={this.changeDate2}/>
-                          </div>
+                                Raza: <input type="text" value={this.state.filtroRaza} onChange={(event) => {
+                                this.setState({filtroRaza: event.target.value})
+                            }}/>
+                            </div>
+                            <div className="col-md-2 text-center">
+                                After: <DatePicker selected={this.state.fecha1} onChange={this.changeDate1}/>
+                            </div>
+                            <div className="col-md-2 text-center">
+                                Before: <DatePicker selected={this.state.fecha2} onChange={this.changeDate2}/>
+                            </div>
                         </div>
                     </div>
+
                     <div className="col-md-2">
                         <button onClick={this.openModal} className="btn btn-success">+ Animal</button>
                     </div>
+
                 </div>
+
+                {/*Modal*/}
                 <div className="row">
-                    <Modal isOpen={this.state.modalIsOpen} onRequestClose={this.closeModal} contentLabel="Modal" shouldCloseOnOverlayClick={false} style={customStyles}>
+                    <Modal isOpen={this.state.modalIsOpen} onRequestClose={this.closeModal} contentLabel="Modal"
+                           shouldCloseOnOverlayClick={false} style={customStyles}>
                         <div className="container">
                             <div className="row text-center">
                                 <h2>Animal Form</h2>
@@ -223,42 +227,55 @@ class Animal extends Component {
                             </div>
                             <div className="row">
                                 <div className="col-md-6 text-center">
-                                    <button type="button" className="btn btn-danger" onClick={this.closeModal}>Back</button>
+                                    <button type="button" className="btn btn-danger" onClick={this.closeModal}>Back
+                                    </button>
                                 </div>
                                 <div className="col-md-6 text-center">
-                                    <button type="button" className="btn btn-success" onClick={this.insertAnimal}>Add</button>
+                                    <button type="button" className="btn btn-success" onClick={this.insertAnimal}>Add
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </Modal>
+                    {/*End Modal*/}
 
-                    {filteredAnimals.map((animal, index) => <div key ={index} className="panel panel-info col-md-3">
-                        <div className="panel-heading">
+                    {filteredAnimals.map((animal, index) =>
+                        <div key={index} id="animal" className="col-md-4">
 
-                            <h3 className="panel-title">
-                                ID: {animal._id}</h3>
+                            <div  className="panel panel-info">
 
-                                <button className="delete" onClick={()=> this.deleteThisAnimal(animal._id)}>
-                                    &times;
-                                </button>
+                                <div className="panel-heading">
+                                    <div className="row">
+                                        <div className="col-md-10">
+                                            <h3 className="panel-title">ID: {animal.number}</h3>
+                                        </div>
+                                        <div className="col-md-2">
+                                            <button className="deleteAnimal"
+                                                    onClick={() => this.deleteThisAnimal(animal._id)}>
+                                                &times;
+                                            </button>
+                                        </div>
+                                    </div>
 
 
-                        </div>
+                                </div>
 
-                        <div className="col-md-3">
+                                <div className="col-md-3">
 
 
-                              <img alt="User Pic" src="http://pre09.deviantart.net/0f00/th/pre/f/2011/170/8/2/stock_cow_number_3_by_pomprint-d3jbfnb.png" className="img-circle img-responsive"/>
-                        </div>
+                                    <img alt="User Pic"
+                                         src="http://pre09.deviantart.net/0f00/th/pre/f/2011/170/8/2/stock_cow_number_3_by_pomprint-d3jbfnb.png"
+                                         className="img-circle img-responsive"/>
+                                </div>
 
-                        <div className="col-md-9">
-                                <table className="table table-user-information">
-                                    <tbody>
-                                      <tr>
-                                          <td>Number:</td>
-                                          <td>
-                                              {animal.number}</td>
-                                      </tr>
+                                <div className="col-md-9">
+                                    <table className="table table-user-information">
+                                        <tbody>
+                                        <tr>
+                                            <td>Number:</td>
+                                            <td>
+                                                {animal.number}</td>
+                                        </tr>
                                         <tr>
                                             <td>Especie:</td>
                                             <td>
@@ -276,10 +293,11 @@ class Animal extends Component {
                                             <td>Fecha ingreso:</td>
                                             <td>{animal.date.toISOString()}</td>
                                         </tr>
-                                    </tbody>
-                                </table>
-                        </div>
-                    </div>)}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>)}
                 </div>
             </div>
         );
@@ -295,9 +313,9 @@ export default createContainer(() => {
     Meteor.subscribe('animales');
     var idFinca = FlowRouter.getParam("fincaId");
     console.log(idFinca);
-      return {
-          animales: Animales.find({farm: idFinca}).fetch(),
-          currentUser: Meteor.user()
-      };
+    return {
+        animales: Animales.find({farm: idFinca}).fetch(),
+        currentUser: Meteor.user()
+    };
 
 }, Animal);

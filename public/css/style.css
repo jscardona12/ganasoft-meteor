@@ -41,8 +41,28 @@ button.btn-circle {
     margin-right:10px;
     margin-top: 50px;
 }
-
+.panel-info>.panel-heading {
+    background-image: linear-gradient(to bottom,#008A91 0,#008A91 100%) !important;
+}
+.panel-title{
+    color: #000E0A;
+}
 #body{
     background-color:white;
 }
+#animal{
+    margin-top: 50px;
+}
+.deleteAnimal {
+    float: right;
+    font-weight: bold;
+    background: none;
+    font-size: 2em;
+    border: none;
+    position: relative;
+    color: #000E0A;
+    margin-right:-28px;
+    margin-top: -29px;
+}
+
 

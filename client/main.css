@@ -1,0 +1,68 @@
+button.btn-circle {
+    width: 300px;
+    height: 300px;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 12px;
+    line-height: 1.42;
+    border-radius: 100%;
+    background-color: #008A91;
+    color: #000E0A;
+    margin-top: 50px;
+}
+#navbar{
+    background-color: #050E04;
+}
+.navbar-light .navbar-brand{
+    color: #FAF1FB;
+}
+.logo{
+    margin-top: -5px;
+}
+#navbar-list{
+    color: #FAF1FB;
+}
+
+#navbar-list:hover{
+    color: #050E04;
+}
+
+#navbar-list:focus{
+    color: #050E04;
+}
+.delete {
+    float: right;
+    font-weight: bold;
+    background: none;
+    font-size: 3em;
+    border: none;
+    position: relative;
+    color: #000E0A;
+    margin-right:10px;
+    margin-top: 50px;
+}
+.panel-info>.panel-heading {
+    background-image: linear-gradient(to bottom,#008A91 0,#008A91 100%) !important;
+}
+.panel-title{
+    color: #000E0A;
+}
+#body{
+    background-color:white;
+}
+#animal{
+    margin-top: 50px;
+}
+.deleteAnimal {
+    float: right;
+    font-weight: bold;
+    background: none;
+    font-size: 2em;
+    border: none;
+    position: relative;
+    color: #000E0A;
+    margin-right:-28px;
+    margin-top: -29px;
+}
+
+
