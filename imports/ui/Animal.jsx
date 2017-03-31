@@ -35,17 +35,30 @@ class Animal extends Component {
             sexo: '',
             descripcion: '',
             modalIsOpen: false,
-            startDate: moment()
+            startDate: moment(),
+            fecha1: '',
+            fecha2: '',
+            filtroId: ''
         };
 
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
         this.insertAnimal = this.insertAnimal.bind(this);
         this.changeDate= this.changeDate.bind(this);
+        this.changeDate1= this.changeDate1.bind(this);
+        this.changeDate2= this.changeDate2.bind(this);
     }
 
     changeDate(date) {
         this.setState({startDate: date});
+    }
+
+    changeDate1(date) {
+        this.setState({fecha1: date});
+    }
+
+    changeDate2(date) {
+        this.setState({fecha2: date});
     }
 
     componentDidMount() {
@@ -72,13 +85,44 @@ class Animal extends Component {
         this.setState({modalIsOpen: false});
     }
 
+    deleteThisAnimal(id){
+      Meteor.call('animales.remove', id);
+
+    }
+
     render() {
+      let filteredAnimals=this.props.animales;
+      console.log("ONI CHAN"+this.props.animales);
+      if (this.state.fecha1) {
+        filteredAnimals = filteredAnimals.filter(animal => animal.date-this.state.fecha1>=0);
+      }
+      if (this.state.fecha2) {
+        filteredAnimals = filteredAnimals.filter(animal => animal.date-this.state.fecha2<=0);
+      }
+      if (this.state.filtroId) {
+        filteredAnimals = filteredAnimals.filter(animal => animal._id.toString().startsWith(this.state.filtroId));
+      }
         return (
-            <div className="col-md-11">
+            <div className="col-md-10">
 
                 <div className="row">
                     <div className="col-md-10">
-                        <p>This is a paragraph</p>
+                        <div className="row">
+                          <div className="col-md-3 text-center">
+                            <b>Filtrar </b>
+                          </div>
+                          <div className="col-md-3 text-center">
+                            Id: <input type="text" value={this.state.filtroId} onChange={(event) => {
+                                this.setState({filtroId: event.target.value})
+                            }}/>
+                          </div>
+                          <div className="col-md-3 text-center">
+                            After: <DatePicker selected={this.state.fecha1} onChange={this.changeDate1}/>
+                          </div>
+                          <div className="col-md-3 text-center">
+                            Before: <DatePicker selected={this.state.fecha2} onChange={this.changeDate2}/>
+                          </div>
+                        </div>
                     </div>
                     <div className="col-md-2">
                         <button onClick={this.openModal} className="btn btn-success">+ Animal</button>
@@ -177,18 +221,34 @@ class Animal extends Component {
                             </div>
                         </div>
                     </Modal>
-                    {this.props.animales.map((animal, index) => <div key ={index} className="panel panel-info col-md-3">
+
+                    {filteredAnimals.map((animal, index) => <div key ={index} className="panel panel-info col-md-3">
                         <div className="panel-heading">
+
                             <h3 className="panel-title">
-                                ID: {animal.numero}</h3>
+                                ID: {animal._id}</h3>
+
+                                <button className="delete" onClick={()=> this.deleteThisAnimal(animal._id)}>
+                                    &times;
+                                </button>
+
+
                         </div>
-                        <div className="col-md-4">
-                            <img alt="User Pic" src={animal.foto} className="img-circle img-responsive"/>
+
+                        <div className="col-md-3">
+
+
+                              <img alt="User Pic" src="http://pre09.deviantart.net/0f00/th/pre/f/2011/170/8/2/stock_cow_number_3_by_pomprint-d3jbfnb.png" className="img-circle img-responsive"/>
                         </div>
+
                         <div className="col-md-9">
-                            <div className=" col-md-9 col-lg-9 ">
                                 <table className="table table-user-information">
                                     <tbody>
+                                      <tr>
+                                          <td>Number:</td>
+                                          <td>
+                                              {animal.number}</td>
+                                      </tr>
                                         <tr>
                                             <td>Especie:</td>
                                             <td>
@@ -202,9 +262,12 @@ class Animal extends Component {
                                             <td>Genero:</td>
                                             <td>{animal.sexo}</td>
                                         </tr>
+                                        <tr>
+                                            <td>Fecha ingreso:</td>
+                                            <td>{animal.date.toISOString()}</td>
+                                        </tr>
                                     </tbody>
                                 </table>
-                            </div>
                         </div>
                     </div>)}
                 </div>
@@ -222,9 +285,9 @@ export default createContainer(() => {
     Meteor.subscribe('animales');
     var idFinca = FlowRouter.getParam("fincaId");
     console.log(idFinca);
-    return {
-        animales: Animales.find({farm: idFinca}).fetch(),
-        currentUser: Meteor.user()
-    };
+      return {
+          animales: Animales.find({farm: idFinca}).fetch(),
+          currentUser: Meteor.user()
+      };
 
 }, Animal);
