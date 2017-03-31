@@ -38,7 +38,8 @@ class Animal extends Component {
             startDate: moment(),
             fecha1: '',
             fecha2: '',
-            filtroId: ''
+            filtroId: '',
+            filtroRaza: ''
         };
 
         this.openModal = this.openModal.bind(this);
@@ -92,7 +93,6 @@ class Animal extends Component {
 
     render() {
       let filteredAnimals=this.props.animales;
-      console.log("ONI CHAN"+this.props.animales);
       if (this.state.fecha1) {
         filteredAnimals = filteredAnimals.filter(animal => animal.date-this.state.fecha1>=0);
       }
@@ -102,24 +102,34 @@ class Animal extends Component {
       if (this.state.filtroId) {
         filteredAnimals = filteredAnimals.filter(animal => animal._id.toString().startsWith(this.state.filtroId));
       }
+      if (this.state.filtroRaza) {
+        filteredAnimals = filteredAnimals.filter(animal => animal.raza.startsWith(this.state.filtroRaza));
+      }
+
+
         return (
             <div className="col-md-10">
 
                 <div className="row">
                     <div className="col-md-10">
                         <div className="row">
-                          <div className="col-md-3 text-center">
+                          <div className="col-md-2 text-center">
                             <b>Filtrar </b>
                           </div>
-                          <div className="col-md-3 text-center">
+                          <div className="col-md-2 text-center">
                             Id: <input type="text" value={this.state.filtroId} onChange={(event) => {
                                 this.setState({filtroId: event.target.value})
                             }}/>
                           </div>
-                          <div className="col-md-3 text-center">
+                            <div className="col-md-2 text-center">
+                              Raza: <input type="text" value={this.state.filtroRaza} onChange={(event) => {
+                                  this.setState({filtroRaza: event.target.value})
+                              }}/>
+                          </div>
+                          <div className="col-md-2 text-center">
                             After: <DatePicker selected={this.state.fecha1} onChange={this.changeDate1}/>
                           </div>
-                          <div className="col-md-3 text-center">
+                          <div className="col-md-2 text-center">
                             Before: <DatePicker selected={this.state.fecha2} onChange={this.changeDate2}/>
                           </div>
                         </div>
