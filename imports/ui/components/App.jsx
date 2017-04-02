@@ -9,6 +9,7 @@ class App extends Component {
     }
 
 
+
     render() {
         return (
             <div >
@@ -32,14 +33,11 @@ class App extends Component {
                         </div>
                         <div className="navbar-collapse collapse">
                             <ul className="nav navbar-nav navbar-right">
+                                <li><AccountsUIWrapper/></li>
                                 <li><a id="navbar-list" href="/fincas">Fincas</a></li>
                                 <li><a id="navbar-list" href="#">Settings</a></li>
                                 <li><a id="navbar-list" href="#">Profile</a></li>
                             </ul>
-                            <form className="navbar-form navbar-right">
-                                <input type="text" className="form-control" placeholder="Search..."/>
-                            </form>
-                            <AccountsUIWrapper/>
                         </div>
                     </div>
                 </nav>

@@ -11,7 +11,7 @@ class Finca extends Component {
 
         this.state = {
             alert: null,
-            animals: Animales.find({farm: this.props.finca._id, owner: Meteor.userId()})
+            animals: Animales.find({farm: this.props.finca._id, owner: Meteor.userId()}).fetch()
         }
     }
 
@@ -91,7 +91,7 @@ class Finca extends Component {
                     {this.state.alert}
                     <h4 className="text-muted text-center">NumAnimales: {this.state.animals.length}</h4>
                     <a href={this.getPath()}>
-                        <button> lista de animales</button>
+                        <button id="buttonAnimal"className="btn btn-lg"> Animales</button>
                     </a>
                 </div>
             </div>

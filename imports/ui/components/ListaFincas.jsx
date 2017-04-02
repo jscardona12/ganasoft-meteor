@@ -4,6 +4,7 @@ import Finca from './Finca';
 import {Farms} from '../../api/fincas.js';
 import ReactDOM from 'react-dom';
 import {Meteor} from 'meteor/meteor';
+import SweetAlert from 'react-bootstrap-sweetalert';
 
 
 class ListaFincas extends Component {
@@ -11,7 +12,16 @@ class ListaFincas extends Component {
         super(props);
 
         this.state = {
-            fincas: []
+            fincas: [],
+            alert:<SweetAlert
+                warning
+                confirmBtnText="OK!"
+                confirmBtnBsStyle="danger"
+                cancelBtnBsStyle="default"
+                title="Please login to see your farms"
+                onConfirm={()=>this.setState({alert:null})}
+            >
+            </SweetAlert>,
         };
     }
 
@@ -54,11 +64,12 @@ class ListaFincas extends Component {
 
                 </div>
             );
-        } else {
+        } else{
             return (
                 <div>
-                    You must be logged in to view your farms!!!
+                    {this.state.alert}
                 </div>
+
             );
 
         }
