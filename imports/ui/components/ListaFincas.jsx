@@ -2,6 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import {createContainer} from 'meteor/react-meteor-data';
 import Finca from './Finca';
 import {Farms} from '../../api/fincas.js';
+import {Animales} from '../../api/animales'
 import ReactDOM from 'react-dom';
 import {Meteor} from 'meteor/meteor';
 import SweetAlert from 'react-bootstrap-sweetalert';
@@ -56,8 +57,11 @@ class ListaFincas extends Component {
                     <div className="row placeholders">
                         {console.log(Farms.find({}).fetch())}
                         {/*{console.log(this.props.currentUser)}*/}
-                        {this.props.fincas.map((finca, index) =>
-                            <Finca key={index} finca={finca}/>
+                        {this.props.fincas.map((finca, index) => {
+                                let filteredAnimals = this.props.animales ;
+                                filteredAnimals = filteredAnimals.filter(animal => animal.farm.startsWith(finca._id));
+                                return <Finca key={index} animales={filteredAnimals} finca={finca}/>
+                            }
                         )}
 
                     </div>
@@ -78,14 +82,17 @@ class ListaFincas extends Component {
 
 }
 ListaFincas.propTypes = {
+    animales:PropTypes.array.isRequired,
     fincas: PropTypes.array.isRequired,
     currentUser: PropTypes.object
 };
 
 export default createContainer(() => {
     Meteor.subscribe('fincas');
+    Meteor.subscribe('animales');
     return {
         fincas: Farms.find({owner: Meteor.userId()}).fetch(),
+        animales: Animales.find({owner: Meteor.userId()}).fetch(),
         currentUser: Meteor.user()
     };
 
