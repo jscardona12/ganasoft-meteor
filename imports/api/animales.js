@@ -60,12 +60,19 @@ Meteor.methods({
         //check(taskId, String);
 
 
-        const task = Animales.findOne(animalId);
-        if (task.owner !== this.userId) {
+        const animal = Animales.findOne(animalId);
+        if (animal.owner !== this.userId) {
             // If the task is private, make sure only the owner can delete it
             throw new Meteor.Error('not-authorized');
         }
 
         Animales.remove(animalId);
     },
+    'animales.get'(farmId){
+        const animales = Animales.find({}).fetch();
+        console.log("ANIMALES");
+        console.log(animales);
+        return animales;
+    }
+
 });

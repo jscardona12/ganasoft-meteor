@@ -11,7 +11,6 @@ class Finca extends Component {
 
         this.state = {
             alert: null,
-            animals: Animales.find({farm: this.props.finca._id, owner: Meteor.userId()})
         }
     }
 
@@ -72,11 +71,11 @@ class Finca extends Component {
 
 
     componentDidMount() {
-        console.log("im finca");
-        // this.getAnimales();
+
     }
 
     render() {
+        {console.log(this.props.animales);}
         return (
             <div className="col-md-4 circle">
                 <div>
@@ -86,12 +85,14 @@ class Finca extends Component {
                 </div>
                 <div className="text-vertical-center">
                     <a href={this.getPath()}>
-                        <button className="btn btn-circle"><h2>{this.props.finca.name}</h2></button>
+                        <button className="btn btn-circle">
+                            <h2>{this.props.finca.name}</h2>
+                            <h4 >NumAnimales: {this.props.animales.length}</h4>
+                        </button>
                     </a>
                     {this.state.alert}
-                    <h4 className="text-muted text-center">NumAnimales: {this.state.animals.length}</h4>
                     <a href={this.getPath()}>
-                        <button> lista de animales</button>
+                        <button id="buttonAnimal"className="btn btn-lg"> Animales</button>
                     </a>
                 </div>
             </div>

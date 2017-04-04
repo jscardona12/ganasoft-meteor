@@ -10,6 +10,11 @@ button.btn-circle {
     color: #000E0A;
     margin-top: 50px;
 }
+#buttonAnimal{
+    background-color:#043A59;
+    margin-left:26%;
+    color:#FAF1FB;
+}
 #navbar{
     background-color: #050E04;
 }
@@ -20,15 +25,15 @@ button.btn-circle {
     margin-top: -5px;
 }
 #navbar-list{
-    color: #FAF1FB;
+    color: #FAF1FB !important;
 }
 
 #navbar-list:hover{
-    color: #050E04;
+    color: #050E04 !important;
 }
 
 #navbar-list:focus{
-    color: #050E04;
+    color: #050E04 !important;
 }
 .delete {
     float: right;
@@ -53,6 +58,7 @@ button.btn-circle {
 #animal{
     margin-top: 50px;
 }
+
 .deleteAnimal {
     float: right;
     font-weight: bold;
@@ -63,6 +69,34 @@ button.btn-circle {
     color: #000E0A;
     margin-right:-28px;
     margin-top: -29px;
+}
+.login-button
+{
+    background: #050E04 !important;
+}
+
+#login-buttons a{
+    background-color: none !important;
+    color: #FAF1FB !important;
+    padding: 14px 25px !important;
+    text-align: center !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    font-family: 'Montserrat', sans-serif !important;
+    margin-top: 5px;
+}
+#login-buttons a:hover{
+    background-color:white !important;
+    color: #050E04 !important;
+}
+#login-buttons a:focus {
+    background-color: white !important;
+    color: #050E04 !important;
+}
+#login-dropdown-list {
+    position: absolute;
+    top: 10px;
+    left: -1px;
 }
 
 
