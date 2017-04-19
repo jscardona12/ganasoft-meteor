@@ -76,3 +76,4 @@ Meteor.methods({
     }
 
 });
+// Donde estan las pruebas?
