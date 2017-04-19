@@ -21,3 +21,9 @@ react-meteor-data
 accounts-ui
 accounts-password
 kadira:flow-router
+practicalmeteor:mocha
+dispatch:mocha
+dispatch:mocha-browser
+dburles:factory
+xolvio:cleaner
+random

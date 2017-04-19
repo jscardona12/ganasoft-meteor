@@ -22,5 +22,9 @@
     "react-router": "^4.0.0",
     "react-router-dom": "^4.0.0",
     "sweetalert-react": "^0.4.9"
+  },
+  "devDependencies": {
+    "faker": "^4.1.0",
+    "mocha": "^3.2.0"
   }
 }

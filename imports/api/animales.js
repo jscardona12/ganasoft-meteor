@@ -39,9 +39,9 @@ Meteor.methods({
 
 
         // Make sure the user is logged in before inserting a task
-        if (!this.userId) {
-            throw new Meteor.Error('not-authorized');
-        }
+        // if (!this.userId) {
+        //     throw new Meteor.Error('not-authorized');
+        // }
 
         Animales.insert({
             farm,
@@ -68,11 +68,9 @@ Meteor.methods({
 
         Animales.remove(animalId);
     },
-    'animales.get'(farmId){
-        const animales = Animales.find({}).fetch();
-        console.log("ANIMALES");
-        console.log(animales);
-        return animales;
+    'animales.deleteByNumber'(numberA){
+        const animales = Animales.find({number:numberA}).fetch();
+        Animales.remove(animalId);
     }
 
 });
