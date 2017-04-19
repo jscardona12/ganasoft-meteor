@@ -2,6 +2,8 @@
  * Created by Juan on 16/03/2017.
  */
 
+// Con ESlint todos estos imports les aparecerian con error ya que el modo "correcto" debería ser con espacio después y antes del corchete
+// e.g. { Meteor }
 import {Meteor} from 'meteor/meteor';
 import {Mongo} from 'meteor/mongo';
 import {check} from 'meteor/check';
@@ -21,6 +23,7 @@ if (Meteor.isServer) {
 Meteor.methods({
     'animales.insert'(farm, number, especie, raza, sexo, descripcion, date) {
 
+        // se deberían eliminar los logs y comentarios del código
         console.log("ATRIBUTOS");
         console.log(farm);
         console.log(number);
@@ -42,6 +45,9 @@ Meteor.methods({
         if (!this.userId) {
             throw new Meteor.Error('not-authorized');
         }
+        // Para el usuario no es claro si number es el número de animales
+        // los ids deberían agregarse incrementalmente
+        // Está el atributo de todo docuemtno en mongo llamado _id que es único y es un objecto tipo Mongo.ObjectId(), aunque tal vez visualmente no sea apropiado
 
         Animales.insert({
             farm,

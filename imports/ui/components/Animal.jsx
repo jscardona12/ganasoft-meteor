@@ -207,6 +207,7 @@ class Animal extends Component {
                                                 Descripción
                                             </div>
                                             <div className="row">
+                                              // la fecha ingreso debería mostrarse en un formato diferente al usuario
                                                 Fecha Ingreso
                                             </div>
                                         </div>

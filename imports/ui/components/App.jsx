@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import AccountsUIWrapper from './AccountsUIWrapper.jsx';
-
+// deberían corregir los errores de accesibilidad que les aparecen al correr audits
+// ya que hay dos errores severos y dos warnings
+//agregar labels a los inputs para mejorar a11y
+// La app me gusta, solamente deberían solucionar los problemas de compatibilidad con diferentes pantallas, los de accesibilidad y uno que otro de usabilidad
 class App extends Component {
     constructor(props) {
         super(props);
