@@ -70,7 +70,7 @@ Meteor.methods({
     },
     'animales.deleteByNumber'(numberA){
         const animales = Animales.find({number:numberA}).fetch();
-        Animales.remove(animalId);
+        Animales.remove(animales[0]._id);
     }
 
 });

@@ -18,43 +18,7 @@ Factory.define('animalestest', Animales, {
     url: ()=>'google.com'
 });
 
-if(Meteor.isClient()) {
-
-    describe('Accounts', function () {
-
-        beforeEach(function () {
-            resetDatabase();
-        });
-
-        it('Should be able to create a user from the client side', function () {
-            const tusername = faker.internet.userName();
-            const temail = faker.internet.email();
-            const tpassword = 'hola1234';
-
-            const createUser = new Promise((resolve, reject) => {
-                Accounts.createUser({
-                    username: tusername,
-                    email: temail,
-                    password: tpassword,
-                }, (error) => {
-                    if (error) {
-                        reject(error);
-                    } else {
-                        const newUser = Meteor.users.findOne();
-                        resolve(newUser);
-                    }
-                });
-            });
-            return createUser.then(function (newUser) {
-                expect(newUser).to.not.be.undefined;
-                console.log(newUser);
-                expect(newUser.username).to.equal(tusername);
-            });
-        });
-    });
-}
-
-    describe('Animales', function() {
+ describe('Animales', function() {
         describe('add animal', function () {
             beforeEach(function () {
                 resetDatabase();
