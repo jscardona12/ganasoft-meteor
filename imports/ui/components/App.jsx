@@ -8,7 +8,13 @@ class App extends Component {
         this.state = {};
     }
 
-
+// No encontre la retroalimentación de los usuriarios, si que tiene dos logos pero aun cuando se despliega que sigue saliendo del fondo negro.
+// Se esta perdiendo mucho espacio en la paguina en su inicio y cuando se loggea, se puede adicionar una descripción para entender mejor la dinamica de la aplicación
+// En los campos cuando se quiere agregar un animal, no tiene ninguna diferenciación del tipo de dato que recibe, seria bueno que si son de tipo date
+// me de un ayuda visual de que va ahi.
+// en el menu principal, me parece muy bien que cuando no estoy loggeada me arroje un pop-up que me explique que me tengo que loggear, pero también deberia pasar 
+// con settings o profile (o solo no aparecer). 
+// Otra cosita son las validación en las fechas del filtro, es decir que los usuarios no puedan poner las fechas inversas y aun tenga sentido.
 
     render() {
         return (
