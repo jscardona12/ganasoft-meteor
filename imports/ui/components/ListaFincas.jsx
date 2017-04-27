@@ -7,13 +7,22 @@ import ReactDOM from 'react-dom';
 import {Meteor} from 'meteor/meteor';
 import SweetAlert from 'react-bootstrap-sweetalert';
 
+
 class ListaFincas extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
             fincas: [],
-            alert: <SweetAlert warning confirmBtnText="OK!" confirmBtnBsStyle="danger" cancelBtnBsStyle="default" title="Please login to see your farms" onConfirm={() => this.setState({alert: null})}></SweetAlert>
+            alert:<SweetAlert
+                warning
+                confirmBtnText="OK!"
+                confirmBtnBsStyle="danger"
+                cancelBtnBsStyle="default"
+                title="Please login to see your farms"
+                onConfirm={()=>this.setState({alert:null})}
+            >
+            </SweetAlert>,
         };
     }
 
@@ -37,33 +46,29 @@ class ListaFincas extends Component {
     render() {
         if (Meteor.userId()) {
             return (
-                <div className="col-md-10">
-                    <div className="row">
-                        <div className="form-group">
+                <div className="col-md-11">
 
-                            <form className="new-task" onSubmit={this.handleSubmit.bind(this)}>
+                    <form className="new-task" onSubmit={this.handleSubmit.bind(this)}>
 
-                                <input type="text" ref="textInput" className="form-control" placeholder="Escribe aqui el nombre de tu finca. Presiona Enter para crearla!"/>
+                        <input type="text" ref="textInput" placeholder="Type to add new farms"/>
 
-                            </form>
-                        </div>
-                    </div>
+                    </form>
 
                     <div className="row placeholders">
                         {console.log(Farms.find({}).fetch())}
                         {/*{console.log(this.props.currentUser)}*/}
                         {this.props.fincas.map((finca, index) => {
-                            let filteredAnimals = this.props.animales;
-                            filteredAnimals = filteredAnimals.filter(animal => animal.farm.startsWith(finca._id));
-                            return <Finca key={index} animales={filteredAnimals} finca={finca}/>
-                        })}
+                                let filteredAnimals = this.props.animales ;
+                                filteredAnimals = filteredAnimals.filter(animal => animal.farm.startsWith(finca._id));
+                                return <Finca key={index} animales={filteredAnimals} finca={finca}/>
+                            }
+                        )}
 
                     </div>
 
                 </div>
-
             );
-        } else {
+        } else{
             return (
                 <div>
                     {this.state.alert}
@@ -77,7 +82,7 @@ class ListaFincas extends Component {
 
 }
 ListaFincas.propTypes = {
-    animales: PropTypes.array.isRequired,
+    animales:PropTypes.array.isRequired,
     fincas: PropTypes.array.isRequired,
     currentUser: PropTypes.object
 };
