@@ -29,7 +29,11 @@ class Finca extends Component {
 
         };
         const deleteThisFarm =()=> {
+          this.setState({
+              alert: null
+          });
             Meteor.call('fincas.remove', this.props.finca._id);
+
         };
 
         const getWAlert = (
