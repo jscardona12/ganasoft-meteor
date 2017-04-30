@@ -82,6 +82,3 @@ Factory.define('animalestest', Animales, {
             });
         });
     });
-
-
-

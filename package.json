@@ -7,24 +7,29 @@
   "dependencies": {
     "axios": "^0.15.3",
     "babel-runtime": "^6.23.0",
+    "chai": "^3.5.0",
+    "enzyme": "^2.8.2",
     "meteor-node-stubs": "~0.2.4",
     "moment": "^2.18.1",
-    "react": "^15.4.2",
+    "react": "^15.5.4",
     "react-addons": "^0.9.1-deprecated",
     "react-addons-css-transition-group": "^15.4.2",
     "react-addons-pure-render-mixin": "^15.4.2",
     "react-addons-transition-group": "^15.4.2",
     "react-bootstrap-sweetalert": "^3.0.0",
     "react-datepicker": "^0.44.0",
-    "react-dom": "^15.4.2",
+    "react-dom": "^15.5.4",
     "react-modal": "^1.7.3",
     "react-mounter": "^1.2.0",
     "react-router": "^4.0.0",
     "react-router-dom": "^4.0.0",
+    "react-test-renderer": "^15.5.4",
     "sweetalert-react": "^0.4.9"
   },
   "devDependencies": {
     "faker": "^4.1.0",
-    "mocha": "^3.2.0"
+    "jsdom": "^10.0.0",
+    "mocha": "^3.3.0",
+    "react-addons-test-utils": "^15.5.1"
   }
 }
